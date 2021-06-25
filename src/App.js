@@ -1,13 +1,15 @@
 import React from 'react';
 
+import Dashboard from 'components/Dashboard/Dashboard';
+
 import GlobalCss from 'styles/GlobalCss';
-import { dark, darkContract } from 'styles/color';
+import { background, content } from 'styles/color';
 
 function App() {
     return (
         <>
             <GlobalCss styles={advanceStylesStr} />
-            RRR
+            <Dashboard />
         </>
     );
 }
@@ -16,7 +18,7 @@ export default App;
 
 const advanceStylesStr = `
     body {
-        color: ${darkContract};
-        background-color: ${dark};
+        color: ${content};
+        background-color: ${background};
     }
 `;
