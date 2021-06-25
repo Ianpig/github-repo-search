@@ -1,30 +1,22 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { css } from "@emotion/react";
+import React from 'react';
+
+import GlobalCss from 'styles/GlobalCss';
+import { dark, darkContract } from 'styles/color';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p css={containerStyle}>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <GlobalCss styles={advanceStylesStr} />
+            RRR
+        </>
+    );
 }
 
 export default App;
 
-const containerStyle = css`
-  color: #eee;
+const advanceStylesStr = `
+    body {
+        color: ${darkContract};
+        background-color: ${dark};
+    }
 `;
