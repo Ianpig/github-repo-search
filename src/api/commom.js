@@ -5,7 +5,11 @@
 export const generateFetch = domain => (apiPath, fetchOptions) => {
     return fetch(`${domain}${apiPath}`, fetchOptions)
         .then(decorateHttpStatus)
-        .then(({ httpStatus, payload }) => {
+        .then(res => {
+            if (res.httpStatus !== 200) {
+                throw res;
+            }
+            const { httpStatus, payload } = res;
             return { httpStatus, payload };
         });
 };

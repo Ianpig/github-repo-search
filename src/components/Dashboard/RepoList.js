@@ -4,16 +4,29 @@ import PropTypes from 'prop-types';
 
 import RepoVituralScroller from 'components/Dashboard/RepoVituralScroller';
 
-function RepoList({ isLoading, list }) {
+function RepoList({ name, isLoading, isIniting, list, updateMoreRepos, isEnd }) {
     return (
         <div css={containerStyle}>
-            <RepoVituralScroller data={list} isLoading={isLoading} />
+            <RepoVituralScroller
+                data={list}
+                isIniting={isIniting}
+                isLoading={isLoading}
+                updateMoreRepos={updateMoreRepos}
+                isEnd={isEnd}
+                name={name}
+            />
         </div>
     );
 }
 
 RepoList.propTypes = {
-    props: PropTypes.func
+    props: PropTypes.func,
+    name: PropTypes.string,
+    isLoading: PropTypes.bool,
+    isIniting: PropTypes.bool,
+    list: PropTypes.array,
+    updateMoreRepos: PropTypes.func,
+    isEnd: PropTypes.bool
 };
 
 export default RepoList;

@@ -7,15 +7,15 @@ import Divider from '@material-ui/core/Divider';
 import Items from 'components/List/Items';
 import ItemLoading from 'components/List/ItemLoading';
 import useVituralScroll from 'hooks/useVituralScroll';
+import EndFetcher from 'components/Dashboard/EndFetcher';
 
 const loadingArr = [...Array(3).keys()];
 
 const MemoItems = React.memo(Items);
 
-function RepoVituralScroller({ data = [], isLoading }) {
-    const unitHeight = 156;
-    const { ref, offsetY, startPoint, showCounts } = useVituralScroll({
-        itemCount: data.length,
+function RepoVituralScroller({ name, data = [], isLoading, isIniting, updateMoreRepos, isEnd }) {
+    const unitHeight = window.matchMedia('(max-width: 480px)').matches ? 192 : 156;
+    const { ref, offsetY, startPoint, renderCounts } = useVituralScroll({
         unitHeight
     });
 
@@ -29,13 +29,12 @@ function RepoVituralScroller({ data = [], isLoading }) {
                         transform: translateY(${offsetY}px);
                     `}
                 >
-                    {[...new Array(showCounts)].map((_, index) => {
+                    {[...new Array(renderCounts)].map((_, index) => {
                         const selectData = data[index + startPoint];
                         if (!selectData) {
                             return null;
                         }
                         const {
-                            id,
                             full_name,
                             html_url,
                             stargazers_count,
@@ -44,7 +43,8 @@ function RepoVituralScroller({ data = [], isLoading }) {
                             updated_at
                         } = data[index + startPoint];
                         return (
-                            <div key={id}>
+                            // use id will appear duplicate key
+                            <div key={`${name}_${index + startPoint}`}>
                                 <MemoItems
                                     title={full_name}
                                     description={description}
@@ -57,7 +57,20 @@ function RepoVituralScroller({ data = [], isLoading }) {
                             </div>
                         );
                     })}
-                    {isLoading && loadingArr.map((_, i) => <ItemLoading key={i} />)}
+                    {!isIniting && data.length < renderCounts + startPoint && (
+                        <EndFetcher
+                            isEnd={isEnd}
+                            isLoading={isLoading}
+                            updateMoreRepos={updateMoreRepos}
+                        />
+                    )}
+                    {isIniting &&
+                        loadingArr.map((_, i) => (
+                            <div key={i}>
+                                <ItemLoading />
+                                <Divider />
+                            </div>
+                        ))}
                 </div>
             </div>
         </div>
@@ -65,7 +78,12 @@ function RepoVituralScroller({ data = [], isLoading }) {
 }
 
 RepoVituralScroller.propTypes = {
-    props: PropTypes.func
+    name: PropTypes.string,
+    data: PropTypes.array,
+    isLoading: PropTypes.bool,
+    isIniting: PropTypes.bool,
+    updateMoreRepos: PropTypes.func,
+    isEnd: PropTypes.bool
 };
 
 export default RepoVituralScroller;

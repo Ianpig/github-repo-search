@@ -6,8 +6,17 @@ import Typography from '@material-ui/core/Typography';
 
 import { space } from 'styles/constant';
 import commasNumber from 'utils/commasNumber';
+import { below } from 'styles/breakPoint';
 
-function Items({ style, title, description, url, star = 0, type, date = new Date() }) {
+function Items({
+    style,
+    title,
+    description,
+    url,
+    star = 0,
+    type,
+    date = new Date().toISOString()
+}) {
     const lastUpdateDate = new Date(date);
     return (
         <div css={[containerStyle, style]}>
@@ -28,8 +37,7 @@ function Items({ style, title, description, url, star = 0, type, date = new Date
                     </Typography>
                 )}
                 <Typography css={inlineItemStyle} variant="caption">
-                    Last Update: {lastUpdateDate.toLocaleDateString()} {}
-                    {lastUpdateDate.toLocaleTimeString()}
+                    Last Update: {lastUpdateDate.toLocaleDateString()}
                 </Typography>
                 <Typography css={inlineItemStyle} variant="caption">
                     Star: {commasNumber(star)}
@@ -40,14 +48,25 @@ function Items({ style, title, description, url, star = 0, type, date = new Date
 }
 
 Items.propTypes = {
-    props: PropTypes.func
+    props: PropTypes.func,
+    style: PropTypes.object,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    url: PropTypes.string,
+    star: PropTypes.number,
+    type: PropTypes.string,
+    date: PropTypes.string
 };
 
 export default Items;
 
 const containerStyle = css`
-    min-height: ${space * 8}px;
+    min-height: 145px;
     padding: ${space * 2}px 0;
+    box-sizing: border-box;
+    ${below('mobile')} {
+        min-height: 181px;
+    }
 `;
 
 const itemStyle = css`
@@ -63,6 +82,11 @@ const listStyle = css`
     & > span {
         display: inline-block;
         margin-right: ${space * 2}px;
+    }
+    ${below('mobile')} {
+        & > span {
+            display: block;
+        }
     }
 `;
 
