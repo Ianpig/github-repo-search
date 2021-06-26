@@ -14,6 +14,7 @@ function Dashboard() {
     useSetTtitle({ title: 'GitHub Repos Search' });
 
     const [repoName, setRepoName] = useState('');
+    // eslint-disable-next-line no-unused-vars
     const [searchSort, setSearchSort] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +28,7 @@ function Dashboard() {
     async function getRepos({ name, searchSort }) {
         try {
             setIsLoading(true);
+            // eslint-disable-next-line no-unused-vars
             const { httpStatus, payload: { incomplete_results, items, total_count } = {} } =
                 await getReposApi({ name, searchSort });
             if (httpStatus === 200) {
