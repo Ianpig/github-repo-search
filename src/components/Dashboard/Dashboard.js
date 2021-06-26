@@ -54,7 +54,7 @@ function Dashboard() {
         <Layout>
             <SearchRepo name={repoName} updateName={updateRepoName} />
             <ResultCounter counter={counter} isLoading={isLoading} />
-            <RepoList list={repos} />
+            <RepoList isLoading={isLoading} list={repos} />
         </Layout>
     );
 }
