@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import SearchInput from 'components/Input/SearchInput';
 
 import { space } from 'styles/constant';
-function SearchRepo() {
+function SearchRepo({ name, updateName }) {
     return (
         <div>
             <div css={itemStyle}>
@@ -17,8 +17,8 @@ function SearchRepo() {
             </div>
             <div css={itemStyle}>
                 <SearchInput
-                    defaultValue={213}
-                    onChange={console.log}
+                    defaultValue={name}
+                    onChange={updateName}
                     placeholder="Please typein repo name"
                 />
             </div>

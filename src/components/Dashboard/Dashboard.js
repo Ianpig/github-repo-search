@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Layout from 'components/Layout';
 import SearchRepo from 'components/Dashboard/SearchRepo';
+import ResultCounter from 'components/Dashboard/ResultCounter';
+import RepoList from 'components/Dashboard/RepoList';
 
 import useSetTtitle from 'hooks/useSetTtitle';
 
@@ -49,6 +51,8 @@ function Dashboard() {
     return (
         <Layout>
             <SearchRepo name={repoName} updateName={updateRepoName} />
+            <ResultCounter counter={counter} isLoading={isLoading} />
+            <RepoList list={repos} />
         </Layout>
     );
 }
