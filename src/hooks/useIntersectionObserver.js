@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useInterSection({ root = null, optoins = {} }) {
+export default function useIntersectionObserver({ root = null, optoins = {} }) {
     const [entry, setEntry] = useState({});
     const [node, setNode] = useState(null);
 
