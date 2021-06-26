@@ -19,6 +19,10 @@ const containerStyle = css`
     width: 1080px;
     margin: 0 auto;
     padding: ${space * 4}px 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
     ${below('desktop')} {
         width: 880px;
     }

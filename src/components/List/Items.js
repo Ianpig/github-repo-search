@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { space } from 'styles/constant';
 import commasNumber from 'utils/commasNumber';
 
-function Items({ style, title, description, url, star, type, date }) {
+function Items({ style, title, description, url, star = 0, type, date = new Date() }) {
     const lastUpdateDate = new Date(date);
     return (
         <div css={[containerStyle, style]}>
