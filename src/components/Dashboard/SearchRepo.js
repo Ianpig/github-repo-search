@@ -27,7 +27,8 @@ function SearchRepo({ name, updateName }) {
 }
 
 SearchRepo.propTypes = {
-    props: PropTypes.func
+    name: PropTypes.string,
+    updateName: PropTypes.func
 };
 
 export default SearchRepo;

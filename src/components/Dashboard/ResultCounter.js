@@ -22,7 +22,8 @@ function ResultCounter({ isLoading, counter }) {
 }
 
 ResultCounter.propTypes = {
-    props: PropTypes.func
+    isLoading: PropTypes.bool,
+    counter: PropTypes.number
 };
 
 export default ResultCounter;

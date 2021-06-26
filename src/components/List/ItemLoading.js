@@ -12,7 +12,7 @@ function ItemLoading() {
             <div css={itemStyle}>
                 <Skeleton css={titltStyle} variant="text" />
             </div>
-            <div css={itemStyle}>
+            <div css={[itemStyle, multipleLineStyle]}>
                 <Skeleton variant="text" />
             </div>
             <div css={[itemStyle, listStyle]}>
@@ -31,8 +31,9 @@ ItemLoading.propTypes = {
 export default ItemLoading;
 
 const containerStyle = css`
-    min-height: ${space * 8}px;
+    min-height: 145px;
     padding: ${space * 2}px 0;
+    box-sizing: border-box;
 `;
 
 const itemStyle = css`
@@ -52,4 +53,8 @@ const listStyle = css`
         display: inline-block;
         margin-right: ${space * 2}px;
     }
+`;
+
+const multipleLineStyle = css`
+    min-height: ${space * 5}px;
 `;
