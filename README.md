@@ -26,19 +26,19 @@ It need default
 ```
 
 `startPoint`
-First, i use scrollTop (scrollRange) division unitHeight. It need remove decimal,because i just want to get start index.
+First, i use scrollTop (scrollRange) to division `unitHeight`. It needs to remove decimal because i just want to get start index.
 
-And reduce `hiddenCount` to get before visual DOM index. Improve user experience.
-Math.max avoid negative number when start index less than `hiddenCount`.
+ I minus `hiddenCount` in oder to get hidden DOM index which improves user experience.
+Math.max will avoid negative number when start index less than `hiddenCount`.
 
 `hiddenCount`
-It use for defined hidden DOM counts.
+It is defined hidden DOM count.
 
 `containerHeight`
-It's a reference dom element from parent scroll container.
+It's a reference DOM element from parent scroll container.
 
 `renderCounts`
-Use container height to calculate item count in view.
-And use Math.ceil to carry negative number. Avoid less render count could not show item.
+I use container height to be divided by `unitHeight` makes item's count in view.
+Then use Math.ceil to carry decimal to avoid less count of render which can not show item.
 
-`hiddenCount * 2` to add before and after in view count.
+The reason why `hiddenCount * 2` is to increase hidden count above and below the in view count.
