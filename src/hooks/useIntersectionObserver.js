@@ -5,7 +5,7 @@ export default function useIntersectionObserver({ root = null, optoins = {} }) {
     const [node, setNode] = useState(null);
 
     useEffect(() => {
-        const observer = new window.IntersectionObserver(([entry]) => setEntry(entry), {
+        const observer = new IntersectionObserver(([entry]) => setEntry(entry), {
             root,
             ...optoins
         });
