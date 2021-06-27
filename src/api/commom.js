@@ -1,6 +1,7 @@
 /**
  * @param  { string } apiPath: api pathName
  * @param  { object } fetchOptions: fetch options argument
+ * @param  { function } callback: api call side effect
  */
 export const generateFetch =
     domain =>
