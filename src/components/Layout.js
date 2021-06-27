@@ -34,5 +34,6 @@ const containerStyle = css`
     }
     ${below('mobile')} {
         width: 100%;
+        padding: 0 ${space * 2}px;
     }
 `;
