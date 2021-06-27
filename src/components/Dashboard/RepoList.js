@@ -2,12 +2,12 @@ import React from 'react';
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 
-import RepoVituralScroller from 'components/Dashboard/RepoVituralScroller';
+import RepoVirtualScroller from 'components/Dashboard/RepoVirtualScroller';
 
 function RepoList({ name, isLoading, isIniting, list, updateMoreRepos, isEnd }) {
     return (
         <div css={containerStyle}>
-            <RepoVituralScroller
+            <RepoVirtualScroller
                 data={list}
                 isIniting={isIniting}
                 isLoading={isLoading}

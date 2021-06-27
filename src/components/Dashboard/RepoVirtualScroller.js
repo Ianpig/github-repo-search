@@ -6,16 +6,16 @@ import Divider from '@material-ui/core/Divider';
 
 import Items from 'components/List/Items';
 import ItemLoading from 'components/List/ItemLoading';
-import useVituralScroll from 'hooks/useVituralScroll';
+import useVirtualScroll from 'hooks/useVirtualScroll';
 import EndFetcher from 'components/Dashboard/EndFetcher';
 
 const loadingArr = [...Array(3).keys()];
 
 const MemoItems = React.memo(Items);
 
-function RepoVituralScroller({ name, data = [], isLoading, isIniting, updateMoreRepos, isEnd }) {
+function RepoVirtualScroller({ name, data = [], isLoading, isIniting, updateMoreRepos, isEnd }) {
     const unitHeight = window.matchMedia('(max-width: 480px)').matches ? 192 : 156;
-    const { ref, offsetY, startPoint, renderCounts } = useVituralScroll({
+    const { ref, offsetY, startPoint, renderCounts } = useVirtualScroll({
         unitHeight
     });
 
@@ -77,7 +77,7 @@ function RepoVituralScroller({ name, data = [], isLoading, isIniting, updateMore
     );
 }
 
-RepoVituralScroller.propTypes = {
+RepoVirtualScroller.propTypes = {
     name: PropTypes.string,
     data: PropTypes.array,
     isLoading: PropTypes.bool,
@@ -86,7 +86,7 @@ RepoVituralScroller.propTypes = {
     isEnd: PropTypes.bool
 };
 
-export default RepoVituralScroller;
+export default RepoVirtualScroller;
 
 const containerStyle = css`
     flex-grow: 1;

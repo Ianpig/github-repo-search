@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 
-export default function useVituralScroll({ unitHeight, hiddenCount = 2 }) {
+export default function useVirtualScroll({ unitHeight, hiddenCount = 2 }) {
     const [scrollRange, setScrollRange] = useState(0);
     const ref = useRef();
 
