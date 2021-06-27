@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import Layout from 'components/Layout';
 import SearchRepo from 'components/Dashboard/SearchRepo';
@@ -12,6 +11,7 @@ import useSetTtitle from 'hooks/useSetTtitle';
 import { getReposApi } from 'api/getRepos';
 
 const perPage = 30;
+
 function Dashboard() {
     useSetTtitle({ title: 'GitHub Repos Search' });
 
@@ -38,7 +38,13 @@ function Dashboard() {
         ) {
             setError(`API rate limit exceeded`);
         } else {
-            setError(`Unexpected Error`);
+            if (error.code === `rateManager block`) {
+                setError(
+                    `You reached your hit limit ( 10 times per min). Reset times at ${error.resetTime.toLocaleTimeString()}`
+                );
+            } else {
+                setError(`Unexpected Error`);
+            }
         }
         if (page > 1) {
             setPage(prevPage => prevPage - 1);
@@ -108,9 +114,5 @@ function Dashboard() {
         </Layout>
     );
 }
-
-Dashboard.propTypes = {
-    props: PropTypes.func
-};
 
 export default Dashboard;
